@@ -3,15 +3,15 @@
 
 int isTemperatureOutOfRange(float temperature)
 {
-  return (temperature < 0 || temperature > 45); 
+	return (temperature < 0 || temperature > 45); 
 }
 int isSocOutOfRange(float soc)
 {
-  return (soc < 20 || soc > 80)
+	return (soc < 20 || soc > 80)
 }
 int isChargeRateOutOfRange(float chargeRate)
 {
-  return (chargeRate > 0.8)
+	return (chargeRate > 0.8)
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate) 
