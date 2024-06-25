@@ -4,11 +4,17 @@
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   int retval ;
   retval = 1;
-  if(temperature < 0 || temperature > 45) {
+  if(temperature < 0 ) {
     printf("Temperature out of range!\n");
     retval=0;
     //return 0;
   }
+    else if (temperature >45)
+    {
+      printf("Temperature out of range!\n");
+      retval=0;
+    }
+      
 
  else if(soc < 20 || soc > 80) {
     printf("State of Charge out of range!\n");
