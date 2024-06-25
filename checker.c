@@ -23,7 +23,7 @@ else if(chargeRate > 0.8) {
   }
   else
   {
-    reval= 1;
+    retval= 1;
   }
   return retval;
 }
