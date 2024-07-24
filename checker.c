@@ -1,38 +1,90 @@
 #include <stdio.h>
 #include <assert.h>
+#include <stdbool.h>
+bool dispalyTemperature(int language);
+bool displayTemperatureGerman(int language);
+bool displaySocGerman(int language);
+bool displaySoc(int language);
+bool displayChargeRateGerman(int language);
+bool displayChargeRate(int language);
 
-int isTemperatureOutOfRange(float temperature)
-{
-	return (temperature < 0 || temperature > 45); 
-}
-int isSocOutOfRange(float soc)
-{
-	return (soc < 20 || soc > 80);
-}
-int isChargeRateOutOfRange(float chargeRate)
-{
-	return (chargeRate > 0.8);
+bool displayTemperatureGerman(int language){
+  if(language == 2){
+    printf("Temperatur außerhalb des zulässigen Bereichs!\n");
+    return true;
+  }
+  return false;//addition of language is possible in future here
 }
 
-int batteryIsOk(float temperature, float soc, float chargeRate) 
-{
-	if(isTemperatureOutOfRange(temperature)) 
-	{
-		return 0; 
-	} 
-	if(isSocOutOfRange(soc)) 
-	{
-		return 0; 
-	} 
-	if(isChargeRateOutOfRange(chargeRate)) 
-	{
-		return 0; 
-	} 
-	return 1;
+bool dispalyTemperature(int language){
+  if(language == 1){
+    printf("Temperature out of range!\n");
+    return true;
+  }
+  return displayTemperatureGerman(language);
+}
+
+bool displaySocGerman(int language){
+  if(language == 2){
+    printf("Ladezustand außerhalb des Bereichs!\n");
+    return true;
+  }
+  return false;//addition of language is possible in future here
+}
+
+bool displaySoc(int language){
+  if(language == 1){
+    printf("State of Charge out of range!\n");
+    return true;
+  }
+  return displaySocGerman(language);
+}
+
+bool displayChargeRateGerman(int language){
+  if(language == 2){
+    printf("Laderate außerhalb des Bereichs!\n");
+    return true;
+  }
+  return false;//addition of language is possible in future here
+}
+
+bool displayChargeRate(int language){
+  if(language == 1){
+    printf("Charge Rate out of range!\n");
+    return true;
+  }
+  return displayChargeRateGerman(language);
+}
+
+int tempcheck(float temperature,int language){
+    if(temperature < 0 || temperature > 45){
+        dispalyTemperature(language);
+        return 0;
+    }
+    return 1;
+}
+int soccheck(float soc,int language){
+    if(soc < 20 || soc > 80){
+        displaySoc(language);
+        return 0;
+    }
+    return 1;
+}
+int chargecheck(float chargeRate,int language){
+    if(chargeRate > 0.8){
+         displayChargeRate(language);
+        return 0;
+    }
+    return 1;
+}
+
+
+int batteryIsOk(float temperature, float soc, float chargeRate, int language) {
+   return tempcheck(temperature,language) && soccheck(soc,language) && chargecheck(chargeRate,language);
 }
 
 int main() {
-  assert(batteryIsOk(25, 70, 0.7));
-  assert(!batteryIsOk(50, 85, 0));
+    assert(batteryIsOk(25, 70, 0.7,1));
+    assert(batteryIsOk(25, 70, 0.7,2));
+    assert(!batteryIsOk(50, 85, 0,1));
 }
-
