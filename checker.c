@@ -3,8 +3,6 @@
 #include <stdbool.h>
 #include "print.h"
 
-
-
 int batteryIsOk(float temperature, float soc, float chargeRate, int language) {
    return tempcheck(temperature,language) && soccheck(soc,language) && chargecheck(chargeRate,language);
 }
