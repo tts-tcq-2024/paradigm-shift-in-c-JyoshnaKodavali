@@ -71,3 +71,4 @@ int chargecheck(float chargeRate,int language){
     }
     return 1;
 }
+
