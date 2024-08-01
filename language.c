@@ -7,3 +7,4 @@ Language currentLanguage = ENGLISH;
 void printMessage(const char *messages[NUM_LANGUAGES]) {
     printf("%s", messages[currentLanguage]);
 }
+
