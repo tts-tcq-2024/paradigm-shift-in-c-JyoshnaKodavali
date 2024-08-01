@@ -14,3 +14,4 @@ int checkChargeRate(float chargeRate);
 int batteryIsOk(float temperature, float soc, float chargeRate);
 
 #endif // CHECK_H
+
