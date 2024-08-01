@@ -1,5 +1,5 @@
-#include "checker.h"
-#include "language_support.h"
+#include "checks.h"
+#include "language.h"
 #include <stdio.h>
 
 int isTemperatureInRange(float temperature) {
