@@ -1,4 +1,4 @@
-#include "battery_check.h"
+#include "checker.h"
 #include "language_support.h"
 #include <stdio.h>
 
@@ -48,4 +48,11 @@ int checkChargeRate(float chargeRate) {
         return 0;
     }
     return 1;
+}
+
+int batteryIsOk(float temperature, float soc, float chargeRate) {
+    int isTempOk = checkTemperature(temperature);
+    int isSocOk = checkSoc(soc);
+    int isChargeRateOk = checkChargeRate(chargeRate);
+    return isTempOk && isSocOk && isChargeRateOk;
 }
