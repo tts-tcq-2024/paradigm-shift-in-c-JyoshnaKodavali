@@ -12,3 +12,4 @@ extern Language currentLanguage;
 void printMessage(const char *messages[NUM_LANGUAGES]);
 
 #endif // LANGUAGE_H
+
