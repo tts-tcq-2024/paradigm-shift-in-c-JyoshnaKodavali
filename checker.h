@@ -1,37 +1,16 @@
-#ifndef BATTERY_STATUS_H
-#define BATTERY_STATUS_H
+#ifndef CHECK_H
+#define CHECK_H
 
-// Global language variable
-enum Language { EN, DE };
-enum Language language = 1;  // Default to English
+typedef int (*CheckFunc)(float);
 
-// Messages in both languages
-const char *messages[2][5] = {
-    // EN
-    {
-        "Normal",
-        "Warning: Approaching discharge",
-        "Warning: Approaching charge-peak",
-        "Alarm: Low limit breached",
-        "Alarm: High limit breached"
-    },
-    // DE
-    {
-        "Normal",
-        "Warnung: Entladung nähert sich",
-        "Warnung: Ladehöhe nähert sich",
-        "Alarm: Untergrenze überschritten",
-        "Alarm: Obergrenze überschritten"
-    }
-};
+int isTemperatureInRange(float temperature);
+int isSocInRange(float soc);
+int isChargeRateInRange(float chargeRate);
 
-// Configuration for parameter limits and warning levels
-typedef struct {
-    float min;
-    float max;
-    float warning_tolerance;
-    bool enable_warning;
-} ParameterConfig;
+int checkTemperature(float temperature);
+int checkSoc(float soc);
+int checkChargeRate(float chargeRate);
 
+int batteryIsOk(float temperature, float soc, float chargeRate);
 
-#endif /*BATTERY_STATUS_H */
+#endif // CHECK_H
