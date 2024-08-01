@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "checker.h"
-
+#include "Battery_Status.h"
 
 ParameterConfig SoC = {20, 80, 0.05, true};
 ParameterConfig Temperature = {0, 45, 0.05, true};
@@ -47,6 +46,7 @@ void check_parameter(const char* param_name, float value, ParameterConfig config
     int message_index = get_message_index(value, config);
     printf("%s: %s\n", param_name, messages[language][message_index]);
 }
+
 
 
 int main() {
