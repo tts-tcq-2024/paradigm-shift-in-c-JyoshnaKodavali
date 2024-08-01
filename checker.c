@@ -47,6 +47,7 @@ void check_parameter(const char* param_name, float value, ParameterConfig config
     printf("%s: %s\n", param_name, messages[language][message_index]);
 }
 
+
 int main() {
     // Example current values for parameters
     float current_SoC = 86;
